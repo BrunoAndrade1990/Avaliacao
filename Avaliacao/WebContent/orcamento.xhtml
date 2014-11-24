@@ -35,6 +35,48 @@
 					<f:selectItem itemValue="4" itemLabel="Crediario" />
 				</h:selectOneMenu>
 				<h:inputHidden />
+			</h:panelGrid>
+
+			<h:panelGrid columns="4">
+				<h:outputText value="Servico:" />
+				<h:outputText value="Qnt: " />
+				<h:inputHidden />
+				<h:outputText value="Preco Unitario: " />
+				
+
+				<h:selectOneMenu value="#{servicoMB.nome}"
+					converter="conversorServico">
+					<f:selectItems value="#{servicoMB.listaServico}" var="serv"
+						itemLabel="#{serv.nome}" itemValue="${serv}" />
+				</h:selectOneMenu>
+				
+				<h:selectOneMenu value="#{orcamentoMB.orcamento.qnt}">
+					<f:selectItem itemValue="1" itemLabel="1" />
+					<f:selectItem itemValue="2" itemLabel="2" />
+					<f:selectItem itemValue="3" itemLabel="3" />
+					<f:selectItem itemValue="4" itemLabel="4" />
+					<f:selectItem itemValue="5" itemLabel="5" />
+					<f:selectItem itemValue="6" itemLabel="6" />
+					<f:selectItem itemValue="7" itemLabel="7" />
+					<f:selectItem itemValue="8" itemLabel="8" />
+					<f:selectItem itemValue="9" itemLabel="9" />
+					<f:selectItem itemValue="10" itemLabel="10" />
+				</h:selectOneMenu>
+				
+				<h:inputText id="inPreco" value="#{orcamentoMB.servico.preco}" />
+				
+				<h:commandButton action="#{orcamentoMB.adicionaServico()}"
+					value="Adicionar" />
+
+				
+				<h:dataTable value="#{orcamentoMB.departamento.funcionario}"
+					var="func">
+					<h:column>#{func.nome}</h:column>
+					<h:column>
+						<h:commandButton value="Excluir"
+							action="#{departamentoMB.excluirFuncionario(func)}" />
+					</h:column>
+				</h:dataTable>
 
 			</h:panelGrid>
 
