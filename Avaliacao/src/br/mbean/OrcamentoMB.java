@@ -17,20 +17,20 @@ import br.model.Servico;
 @ViewScoped
 public class OrcamentoMB {
 	private Orcamento orcamento;
-	//private List<Orcamento> orcamentoLista;
+	private List<Orcamento> orcamentoLista;
 	private OrcamentoDAO orcamentoDAO;
 	private List<Pessoa> listaPessoas;
 	private List<Servico> listaServico;
-	//private Pessoa pessoa;
+	private Pessoa pessoa;
 	private Servico servico;
 
 	@PostConstruct
 	public void inicial() {
 		orcamentoDAO = new OrcamentoDAO();
 		orcamento = new Orcamento();
-		//orcamentoLista = new ArrayList<Orcamento>();
-		//setPessoa(new Pessoa());
-		//orcamentoLista = orcamentoDAO.listar();
+		orcamentoLista = new ArrayList<Orcamento>();
+		setPessoa(new Pessoa());
+		orcamentoLista = orcamentoDAO.listar();
 
 		listaPessoas = new ArrayList<Pessoa>();
 		PessoaDAO pessoaDAO = new PessoaDAO();
@@ -46,7 +46,7 @@ public class OrcamentoMB {
 	public String salvar() {
 		orcamentoDAO.atualizar(orcamento);
 		novoOrcamento();
-		//orcamentoLista = orcamentoDAO.listar();
+		orcamentoLista = orcamentoDAO.listar();
 		return "";
 	}
 
@@ -57,7 +57,7 @@ public class OrcamentoMB {
 	public String excluir() {
 		orcamentoDAO.excluir(orcamento);
 		novoOrcamento();
-		//orcamentoLista = orcamentoDAO.listar();
+		orcamentoLista = orcamentoDAO.listar();
 		return "";
 	}
 
@@ -69,13 +69,13 @@ public class OrcamentoMB {
 		this.orcamento = orcamento;
 	}
 
-/*	public List<Orcamento> getOrcamentoLista() {
+	public List<Orcamento> getOrcamentoLista() {
 		return orcamentoLista;
 	}
 
 	public void setOrcamentoLista(List<Orcamento> orcamentoLista) {
 		this.orcamentoLista = orcamentoLista;
-	}*/
+	}
 
 	public List<Pessoa> getPessoaLista() {
 		return listaPessoas;
@@ -85,13 +85,13 @@ public class OrcamentoMB {
 		this.listaPessoas = pessoaLista;
 	}
 
-/*	public Pessoa getPessoa() {
+	public Pessoa getPessoa() {
 		return pessoa;
 	}
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
-	}*/
+	}
 
 	public List<Servico> getListaServico() {
 		return listaServico;

@@ -7,9 +7,34 @@
 	xmlns:f="http://java.sun.com/jsf/core" template="templete.xhtml">
 	<ui:define name="conteudo">
 		<h:form>
-			<h:panelGrid columns="1">
+			<h:panelGrid columns="3">
 				<h:outputText value="Data do Orçamento*: " />
+				<h:inputText id="inDtOrcamento"
+					value="#{orcamentoMB.orcamento.dataOrcamento}" />
+				<h:message for="inDtOrcamento" />
 
+				<h:outputText value="Validade do Orçamento*: " />
+				<h:inputText id="inDtValidadeOrcamento"
+					value="#{orcamentoMB.orcamento.validadeOrcamento}" />
+				<h:message for="inDtValidadeOrcamento" />
+
+				<h:outputText value="Cliente*: " />
+				<h:selectOneMenu value="#{orcamentoMB.pessoa.nome}"
+					converter="conversorDePessoas">
+					<f:selectItems value="#{orcamentoMB.listaPessoas}" var="lista"
+						itemLabel="#{lista.nome}" itemValue="#{lista}" />
+				</h:selectOneMenu>
+				<h:inputHidden />
+
+				<h:outputText value="Forma de Pagamento: " />
+				<h:selectOneMenu value="#{orcamentoMB.orcamento.pagamento}">
+					<f:selectItem itemValue="1" itemLabel="Dinheiro" />
+					<f:selectItem itemValue="2" itemLabel="Cartao de Credito" />
+					<f:selectItem itemValue="3" itemLabel="Cartao de Debito" />
+					<f:selectItem itemValue="4" itemLabel="Cheque" />
+					<f:selectItem itemValue="4" itemLabel="Crediario" />
+				</h:selectOneMenu>
+				<h:inputHidden />
 
 			</h:panelGrid>
 
