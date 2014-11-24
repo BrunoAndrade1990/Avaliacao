@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" template="templete.xhtml">
+
+	<ui:define name="conteudo">
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputText value="Nome do servico*: " />
+				<h:inputText id="inNome" value="#{servicoMB.servico.nome}" 
+					required="true" requiredMessage="Nome Obrigatorio!" />
+				<h:message for="inNome" />
+
+
+				<h:outputText value="Preco*: " />
+				<h:inputText id="inPreco" value="#{servicoMB.servico.preco}" 
+				required="true" requiredMessage="Preco Obrigatorio!" />
+				<h:message for="inPreco" />
+
+
+				<h:outputText value="Observacoes: " />
+				<h:inputTextarea cols="30" rows="7" value="#{servicoMB.servico.obs}" />
+				<h:inputHidden />
+
+				<h:commandButton value="Salvar" action="#{servicoMB.salvar}" />
+				<h:commandButton value="Cancelar" type="reset" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" template="templete.xhtml">
+
+	<ui:define name="conteudo">
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputText value="Pessoa Fisica/Juricida: " />
+				<h:selectOneMenu value="#{pessoaMB.pessoa.tipoPessoa}">
+					<f:selectItem itemValue="1" itemLabel="Pessoa Fisica" />
+					<f:selectItem itemValue="2" itemLabel="Pessoa Juridica" />
+				</h:selectOneMenu>
+				<h:inputHidden />
+				
+				<h:outputText value="Nome*: " />
+				<h:inputText id="inNome" value="#{pessoaMB.pessoa.nome}"
+					required="true" requiredMessage="Nome Obrigatorio!" />
+				<h:message for="inNome" />
+				
+				<h:outputText value="Sobrenome*: " />
+				<h:inputText id="inSobrenome" value="#{pessoaMB.pessoa.sobrenome}"
+					required="true" requiredMessage="Sobrenome Obrigatorio!" />
+				<h:message for="inSobrenome" />
+				
+				<h:outputText value="E-mail*: " />
+				<h:inputText id="inEmail" value="#{pessoaMB.pessoa.email}"
+					required="true" requiredMessage="E-mail Obrigatorio!" />
+				<h:message for="inEmail" />
+				
+				
+				<h:outputText value="E-mail para cobranca: " />
+				<h:inputText value="#{pessoaMB.pessoa.emailC}"/>
+				<h:inputHidden />
+				
+				<h:outputText value="CPF: " />
+				<h:inputText value="#{pessoaMB.pessoa.cpf}"/>
+				<h:inputHidden />
+				
+				<h:outputText value="Estado Civil: " />
+				<h:selectOneMenu value="#{pessoaMB.pessoa.estCivil}">
+					<f:selectItem itemValue="1" itemLabel="Solteiro(a)" />
+					<f:selectItem itemValue="2" itemLabel="Casado(a)" />
+					<f:selectItem itemValue="3" itemLabel="Viuvo(a)" />
+					<f:selectItem itemValue="4" itemLabel="Divorciado(a)" />
+				</h:selectOneMenu>
+				<h:inputHidden />
+				
+				
+				<h:commandButton value="Salvar" action="#{pessoaMB.salvar}" />
+				<h:commandButton value="Cancelar" type="reset" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
